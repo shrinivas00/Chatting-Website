@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static 'home.css' %}">
+    <style>
+        body {
+            background-color: yellow; /* Changed background color to yellow */
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 100px;
+            float: right; /* Added float property to move the container to the right side */
+        }
+
+        input[type="text"],
+        input[type="button"] {
+            padding: 10px;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        input[type="button"] {
+            background-color: #007bff;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        input[type="button"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Added group name to the side -->
+        <h2>Group Members:</h2>
+        <ul>
+            <li>Chinta Reddy Varshitha - 21BRS1545</li>
+            <li>Ushasree - 21BPS1444</li>
+            <li>Kuruva Kadareshwari - 21BRS1501</li>
+            <li>Sawan Kumar - 21BPS1067</li>
+        </ul>
+        <br>
+        <input type="text" id="room" placeholder="Enter room name">
+        <br>
+        <input type="button" id="submit" value="Submit">
+    </div>
+    <script>
+        var btn = document.getElementById("submit");
+        document.querySelector("#room").focus();
+        document.querySelector("#room").onkeyup = function(e){
+            if (e.keyCode === 13) {// press enter 
+                btn.click();
+            }
+        };
+        btn.onclick = function(e){
+            var roomname = document.getElementById("room").value;
+            window.location.pathname = "/chat/" + roomname + "/";
+        };
+    </script>
+</body>
+</html>
